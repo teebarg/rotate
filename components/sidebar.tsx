@@ -27,6 +27,7 @@ export const Sidebar = () => (
             bgGradient="to-r"
             gradientFrom="blue"
             gradientTo="primary"
+            className="light"
         >
             <Box>
                 <Heading as="h1" size="md" fontWeight="bold">
@@ -62,6 +63,7 @@ export const Sidebar = () => (
                 bgGradient="to-r"
                 gradientFrom="blue"
                 gradientTo="primary"
+                className="light"
             >
                 <Heading as="h1" size="xl" fontWeight="bold">
                     Frontend Mentor

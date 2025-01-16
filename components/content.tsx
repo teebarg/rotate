@@ -68,7 +68,15 @@ export const Content = () => (
     <>
         <Box flex={1}>
             {/* Header */}
-            <Flex bg="secondary" p={{ base: 3, md: 6 }} borderRadius={{ base: "none", md: "lg" }} mb={4} justify="space-between" color="white">
+            <Flex
+                bg="secondary"
+                p={{ base: 3, md: 6 }}
+                borderRadius={{ base: "none", md: "lg" }}
+                mb={4}
+                justify="space-between"
+                color="white"
+                className="light"
+            >
                 <Flex gap={6}>
                     <Box display={{ base: "none", md: "flex" }} alignItems="center" gap={2}>
                         <Icon fontSize="24px">
