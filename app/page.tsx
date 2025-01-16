@@ -1,101 +1,307 @@
-import Image from "next/image";
+"use client";
+
+import React from "react";
+import { Badge, Box, Button, Container, Flex, Text, VStack, HStack, Heading } from "@chakra-ui/react";
+import { FaBars, FaChevronDown, FaChevronUp, FaComment, FaLightbulb, FaPlus } from "react-icons/fa";
+
+interface FeedbackItem {
+    id: number;
+    votes: number;
+    title: string;
+    description: string;
+    type: string;
+    comments: number;
+}
+
+const feedbackData: FeedbackItem[] = [
+    {
+        id: 112,
+        title: "Add tags for solutions",
+        description: "Easier to search for solutions based on a specific stack.",
+        type: "Enhancement",
+        comments: 2,
+        votes: 112,
+    },
+    {
+        id: 99,
+        title: "Add a dark theme option",
+        description: "It would help people with light sensitivities and who prefer dark mode.",
+        type: "Feature",
+        comments: 4,
+        votes: 112,
+    },
+    {
+        id: 65,
+        title: "Q&A within the challenge hubs",
+        description: "Challenge-specific Q&A would make for easy reference.",
+        type: "Feature",
+        comments: 1,
+        votes: 112,
+    },
+    {
+        id: 51,
+        title: "Allow image/video upload to feedback",
+        description: "Images and screencast can enhance comments on solutions.",
+        type: "Enhancement",
+        comments: 2,
+        votes: 112,
+    },
+    {
+        id: 42,
+        title: "Ability to follow others",
+        description: "Stay updated on comments and solutions other people post.",
+        type: "Feature",
+        comments: 3,
+        votes: 112,
+    },
+    {
+        id: 3,
+        title: "Preview images not loading",
+        description: "Challenge preview images are missing when you apply a filter.",
+        type: "Bug",
+        comments: 0,
+        votes: 112,
+    },
+];
+
+interface RoadMapItem {
+    status: "Planned" | "In-Progress" | "Live";
+    count: number;
+    color: string;
+}
+
+const roadmapData: RoadMapItem[] = [
+    { status: "Planned", count: 2, color: "coral" },
+    { status: "In-Progress", count: 3, color: "primary" },
+    { status: "Live", count: 1, color: "skyBlue" },
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    return (
+        <Flex bg="softPurple" direction="column">
+            <Container py={{ base: 0, md: 8 }} px={{ base: 0, md: 8 }}>
+                <Flex gap={{ base: 0, md: 6 }} flexDirection={{ base: "column", lg: "row" }} w="full">
+                    {/* Left Sidebar */}
+                    <Box
+                        display={{ base: "flex", md: "none" }}
+                        alignItems={"center"}
+                        justifyContent={"space-between"}
+                        // w="full"
+                        paddingX={6}
+                        paddingY={5}
+                        color="white"
+                        bgGradient="to-r"
+                        gradientFrom="blue"
+                        gradientTo="primary"
+                    >
+                        <Box>
+                            <Heading as="h1" size="4xl" fontWeight="bold">
+                                Frontend Mentor
+                            </Heading>
+                            <Text textStyle="sm" opacity={0.75} fontWeight="medium" fontSize="15px" color="white">
+                                Feedback Board
+                            </Text>
+                        </Box>
+                        <FaBars />
+                    </Box>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+                    <Box
+                        // w={{ base: "full", md: "full", lg: "250px" }}
+                        display={{ base: "none", md: "flex" }}
+                        alignItems="center"
+                        gap={6}
+                        flexDirection={{ md: "row", lg: "column" }}
+                        w="full"
+                        lg={{ width: "250px" }}
+                    >
+                        {/* Header Card */}
+                        <Flex
+                            w="full"
+                            minH="137px"
+                            p={6}
+                            borderRadius="10"
+                            color="white"
+                            direction={"column"}
+                            justifyContent={"end"}
+                            alignItems={"baseline"}
+                            bgGradient="to-r"
+                            gradientFrom="blue"
+                            gradientTo="primary"
+                        >
+                            <Heading as="h1" size="2xl" fontWeight="bold">
+                                Frontend Mentor
+                            </Heading>
+                            <Text textStyle="sm" opacity={0.75} fontSize="15px" fontWeight="medium">
+                                Feedback Board
+                            </Text>
+                        </Flex>
+
+                        {/* Filter Tags */}
+                        <Flex w="full" p={6} background="white" borderRadius="lg">
+                            <HStack wrap="wrap">
+                                <Badge
+                                    bg="blue"
+                                    _hover={{
+                                        bg: "blueXs", // Background on hover
+                                        color: "blue",
+                                    }}
+                                    cursor="pointer"
+                                    borderRadius="10"
+                                    minW="48px"
+                                    display="flex"
+                                    justifyContent="center"
+                                    fontSize="sm"
+                                    py="2"
+                                    fontWeight="semibold"
+                                >
+                                    All
+                                </Badge>
+                                {["UI", "UX", "Enhancement", "Bug", "Feature"].map((item, index) => (
+                                    <Badge
+                                        key={index}
+                                        bg="lightBlue"
+                                        _hover={{
+                                            bg: "blueXs", // Background on hover
+                                            color: "blue",
+                                        }}
+                                        cursor="pointer"
+                                        borderRadius="10"
+                                        minW="48px"
+                                        display="flex"
+                                        justifyContent="center"
+                                        fontSize="sm"
+                                        py="3"
+                                        fontWeight="semibold"
+                                        color="blue"
+                                    >
+                                        {item}
+                                    </Badge>
+                                ))}
+                            </HStack>
+                        </Flex>
+
+                        {/* Roadmap Card */}
+                        <Box w="full" p={6} background="white" borderRadius="lg">
+                            <Flex justify="space-between" align="center" mb={2}>
+                                <Heading size="sm" fontWeight="bold" color="darkBlue">
+                                    Roadmap
+                                </Heading>
+                                <Button color="blue" fontWeight="semibold" fontSize="sm" textDecoration="underline">
+                                    View
+                                </Button>
+                            </Flex>
+                            <VStack align="stretch">
+                                {roadmapData.map((item) => (
+                                    <Flex key={item.status} justify="space-between" align="center">
+                                        <HStack>
+                                            <Box w={2} h={2} borderRadius="full" bg={item.color} />
+                                            <Text color="mutedBlue" fontSize="16px">
+                                                {item.status}
+                                            </Text>
+                                        </HStack>
+                                        <Text fontWeight="bold" color="mutedBlue" fontSize="16px">
+                                            {item.count}
+                                        </Text>
+                                    </Flex>
+                                ))}
+                            </VStack>
+                        </Box>
+                    </Box>
+
+                    {/* Main Content */}
+                    <Box flex={1}>
+                        {/* Header */}
+                        <Flex
+                            bg="secondary"
+                            p={6}
+                            borderRadius={{ base: "none", md: "lg" }}
+                            mb={4}
+                            justify="space-between"
+                            align="center"
+                            color="white"
+                        >
+                            <Flex alignItems="center" gap={4}>
+                                <Box display={{ base: "none", md: "flex" }} alignItems="center" gap={2}>
+                                    <FaLightbulb width={6} height={6} />
+                                    <Heading size="md" fontWeight="bold">
+                                        6 Suggestions
+                                    </Heading>
+                                </Box>
+                                <Flex alignItems="center" justifyContent="center" gap={1} color="lightBlue" fontSize="sm">
+                                    <Text fontWeight="normal">Sort By:</Text>
+                                    <Text fontWeight="bold">Most Upvotes</Text>
+                                    <FaChevronDown />
+                                </Flex>
+                            </Flex>
+
+                            <Button
+                                bg="primary"
+                                size={"md"}
+                                _hover={{
+                                    bg: "#C75AF6",
+                                }}
+                                px={6}
+                                py={4}
+                                fontWeight="bold"
+                                borderRadius="10"
+                            >
+                                <FaPlus /> Add Feedback
+                            </Button>
+                        </Flex>
+
+                        {/* Feedback List */}
+                        <VStack spaceY="4" px={{ base: 4, md: 0 }} pb={4}>
+                            {feedbackData.map((feedback) => (
+                                <Box key={feedback.id} w="full" p={10} bg="white" borderRadius="10">
+                                    <Box gap={{ base: 4, md: 8 }} display={{ base: "grid", md: "flex" }} gridTemplateColumns="repeat(2, 1fr)">
+                                        <Flex
+                                            textAlign="center"
+                                            w="fit-content"
+                                            py={3}
+                                            px={3}
+                                            bg="lightBlue"
+                                            _hover={{ bg: "blueXs" }}
+                                            borderRadius="10"
+                                            direction={{ base: "row", md: "column" }}
+                                            order={{ base: "2", md: "1" }}
+                                            alignSelf="baseline"
+                                        >
+                                            <Box
+                                                color="blue"
+                                                w="full"
+                                                display="flex"
+                                                justifyContent={
+                                                    feedback.type === "Feature" ? "flex-end" : feedback.type === "Bug" ? "center" : "flex-start"
+                                                }
+                                            >
+                                                <FaChevronUp />
+                                            </Box>
+                                            <Text fontWeight="bold" color="darkBlue" fontSize="13px">
+                                                {feedback.votes}
+                                            </Text>
+                                        </Flex>
+                                        <Box flex={1} color="darkBlue" order={{ base: "1", md: "2" }} style={{ gridColumn: "span 2/ span 2" }}>
+                                            <Heading size="xl" mb={1} fontWeight="bold" color="darkBlue">
+                                                {feedback.title}
+                                            </Heading>
+                                            <Text mb={2} color="mutedBlue" fontSize="16px">
+                                                {feedback.description}
+                                            </Text>
+                                            <Badge mb={2} bg="lightBlue" color="blue" _hover={{ bg: "blueXs" }} py={3} px={4} fontWeight="semibold">
+                                                {feedback.type}
+                                            </Badge>
+                                        </Box>
+                                        <Flex align="center" gap={2} color="darkBlue" order="3" justifyContent="end">
+                                            <FaComment color="#CDD2EE" />
+                                            <Text fontWeight="bold">{feedback.comments}</Text>
+                                        </Flex>
+                                    </Box>
+                                </Box>
+                            ))}
+                        </VStack>
+                    </Box>
+                </Flex>
+            </Container>
+        </Flex>
+    );
 }
