@@ -1,6 +1,7 @@
 import React from "react";
-import { Badge, Box, Button, Flex, Text, VStack, Heading } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, VStack, Heading, Icon } from "@chakra-ui/react";
 import { FaChevronDown, FaChevronUp, FaComment, FaLightbulb } from "react-icons/fa";
+import { Badge } from "@/components/ui/badge";
 
 interface FeedbackItem {
     id: number;
@@ -66,18 +67,26 @@ export const Content = () => (
     <>
         <Box flex={1}>
             {/* Header */}
-            <Flex bg="secondary" p={6} borderRadius={{ base: "none", md: "lg" }} mb={4} justify="space-between" align="center" color="white">
-                <Flex alignItems="center" gap={4}>
+            <Flex bg="secondary" p={{ base: 3, md: 6 }} borderRadius={{ base: "none", md: "lg" }} mb={4} justify="space-between" color="white">
+                <Flex gap={6}>
                     <Box display={{ base: "none", md: "flex" }} alignItems="center" gap={2}>
-                        <FaLightbulb width={6} height={6} />
-                        <Heading size="md" fontWeight="bold">
+                        <Icon fontSize="24px">
+                            <FaLightbulb />
+                        </Icon>
+                        <Heading size="lg" fontWeight="bold">
                             6 Suggestions
                         </Heading>
                     </Box>
-                    <Flex alignItems="center" justifyContent="center" gap={1} color="lightBlue" fontSize="sm">
-                        <Text fontWeight="normal">Sort By:</Text>
-                        <Text fontWeight="bold">Most Upvotes</Text>
-                        <FaChevronDown />
+                    <Flex alignItems="center" justifyContent="center" gap={1} color="lightBlue">
+                        <Text fontWeight="normal" textStyle="sm">
+                            Sort By:
+                        </Text>
+                        <Text fontWeight="bold" textStyle="sm">
+                            Most Upvotes
+                        </Text>
+                        <Icon fontSize="8px">
+                            <FaChevronDown />
+                        </Icon>
                     </Flex>
                 </Flex>
 
@@ -99,14 +108,13 @@ export const Content = () => (
 
             {/* Feedback List */}
             <VStack spaceY="4" px={{ base: 4, md: 0 }} pb={4}>
-                {feedbackData.map((feedback) => (
-                    <Box key={feedback.id} w="full" p={10} bg="white" borderRadius="10">
+                {feedbackData.map((feedback: FeedbackItem, index: number) => (
+                    <Box key={index} w="full" p={10} bg="white" borderRadius="10">
                         <Box gap={{ base: 4, md: 8 }} display={{ base: "grid", md: "flex" }} gridTemplateColumns="repeat(2, 1fr)">
                             <Flex
                                 textAlign="center"
                                 w="fit-content"
-                                py={3}
-                                px={3}
+                                p={3}
                                 bg="lightBlue"
                                 _hover={{ bg: "blueXs" }}
                                 borderRadius="10"
@@ -122,24 +130,24 @@ export const Content = () => (
                                 >
                                     <FaChevronUp />
                                 </Box>
-                                <Text fontWeight="bold" color="darkBlue" fontSize="13px">
+                                <Text fontWeight="bold" color="darkBlue" textStyle="sm">
                                     {feedback.votes}
                                 </Text>
                             </Flex>
                             <Box flex={1} color="darkBlue" order={{ base: "1", md: "2" }} style={{ gridColumn: "span 2/ span 2" }}>
-                                <Heading size="xl" mb={1} fontWeight="bold" color="darkBlue">
+                                <Heading size="lg" fontWeight="bold" color="darkBlue">
                                     {feedback.title}
                                 </Heading>
-                                <Text mb={2} color="mutedBlue" fontSize="16px">
+                                <Text mb="2" color="mutedBlue" textStyle="md">
                                     {feedback.description}
                                 </Text>
-                                <Badge mb={2} bg="lightBlue" color="blue" _hover={{ bg: "blueXs" }} py={3} px={4} fontWeight="semibold">
-                                    {feedback.type}
-                                </Badge>
+                                <Badge key={index}>{feedback.type}</Badge>
                             </Box>
                             <Flex align="center" gap={2} color="darkBlue" order="3" justifyContent="end">
                                 <FaComment color="#CDD2EE" />
-                                <Text fontWeight="bold">{feedback.comments}</Text>
+                                <Text fontWeight="bold" textStyle="md">
+                                    {feedback.comments}
+                                </Text>
                             </Flex>
                         </Box>
                     </Box>
