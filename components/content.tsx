@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Button, Flex, Text, VStack, Heading, Icon } from "@chakra-ui/react";
 import { FaChevronDown, FaChevronUp, FaComment, FaLightbulb } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
+import { ColorModeButton } from "@/components/ui/color-mode";
 
 interface FeedbackItem {
     id: number;
@@ -67,7 +68,15 @@ export const Content = () => (
     <>
         <Box flex={1}>
             {/* Header */}
-            <Flex bg="secondary" p={{ base: 3, md: 6 }} borderRadius={{ base: "none", md: "lg" }} mb={4} justify="space-between" color="white">
+            <Flex
+                bg="secondary"
+                p={{ base: 3, md: 6 }}
+                borderRadius={{ base: "none", md: "lg" }}
+                mb={4}
+                justify="space-between"
+                color="white"
+                className="light"
+            >
                 <Flex gap={6}>
                     <Box display={{ base: "none", md: "flex" }} alignItems="center" gap={2}>
                         <Icon fontSize="24px">
@@ -89,6 +98,8 @@ export const Content = () => (
                         </Icon>
                     </Flex>
                 </Flex>
+
+                <ColorModeButton />
 
                 <Button
                     bg="primary"

@@ -42,8 +42,20 @@ const customConfig = defineConfig({
         },
         semanticTokens: {
             colors: {
+                white: {
+                    value: { _light: "white", _dark: "#252A41" },
+                },
                 blue: {
-                    solid: { value: "{colors.blue}" },
+                    value: { _light: "#4661E6", _dark: "#3B4CB3" },
+                },
+                darkBlue: {
+                    value: { _light: "#3A4374", _dark: "white" },
+                },
+                lightBlue: {
+                    value: { _light: "#F2F4FF", _dark: "black" },
+                },
+                mutedBlue: {
+                    value: { _light: "#647196", _dark: "A0AEC0" },
                 },
             },
         },
