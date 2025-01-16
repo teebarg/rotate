@@ -7,7 +7,7 @@ import { Content } from "@/components/content";
 
 export default function Home() {
     return (
-        <Flex bg="lightBlue" direction="column">
+        <Flex _dark={{ bg: "blackAlpha.100" }} bg="lightBlue" direction="column">
             <Container py={{ base: 0, md: 8 }} px={{ base: 0, md: 8 }}>
                 <Flex gap={{ base: 0, md: 6 }} flexDirection={{ base: "column", lg: "row" }} w="full">
                     <Sidebar />

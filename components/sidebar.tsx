@@ -72,7 +72,7 @@ export const Sidebar = () => (
             </Flex>
 
             {/* Filter Tags */}
-            <Flex w="full" p={6} background="white" borderRadius="10">
+            <Flex w="full" p={6} bg="white" borderRadius="10">
                 <HStack wrap="wrap">
                     {["All", "UI", "UX", "Enhancement", "Bug", "Feature"].map((item: string, index: number) => (
                         <Badge key={index} isActive={index == 0}>
@@ -83,12 +83,12 @@ export const Sidebar = () => (
             </Flex>
 
             {/* Roadmap Card */}
-            <Box w="full" p={6} background="white" borderRadius="10">
+            <Box w="full" p={6} bg="white" borderRadius="10">
                 <Flex justify="space-between" align="center" mb={2}>
                     <Heading size="lg" fontWeight="bold" color="darkBlue">
                         Roadmap
                     </Heading>
-                    <Button color="blue" fontWeight="semibold" fontSize="sm" textDecoration="underline">
+                    <Button color="blue" fontWeight="semibold" fontSize="sm" textDecoration="underline" bg="inherit">
                         View
                     </Button>
                 </Flex>

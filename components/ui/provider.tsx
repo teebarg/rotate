@@ -21,6 +21,8 @@ const customConfig = defineConfig({
                 blueXs: { value: "#CFD7FF" },
                 navy: { value: "#354074" },
                 white: { value: "#FFFFFF" },
+                // whiteDark: { value: "#1A1A1A" },
+                whiteDark: { value: "#252A41" },
 
                 // Secondary colors
                 lightBlue: { value: "#F2F4FF" },
@@ -31,6 +33,13 @@ const customConfig = defineConfig({
                 // Accent colors
                 coral: { value: "#F49F85" },
                 skyBlue: { value: "#62BCFA" },
+
+                // Dark mode specific colors
+                primaryDark: { value: "#9B2CE7" },
+                secondaryDark: { value: "#252A41" },
+                blueDark: { value: "#3B4CB3" },
+                navyDark: { value: "#2A334F" },
+                mutedBlueDark: { value: "#A0AEC0" },
             },
             fonts: {
                 body: { value: jost.style.fontFamily }, // Use Jost for body text
@@ -42,9 +51,15 @@ const customConfig = defineConfig({
         },
         semanticTokens: {
             colors: {
-                blue: {
-                    solid: { value: "{colors.blue}" },
+                white: {
+                    value: { _light: "white", _dark: "{colors.whiteDark}" },
                 },
+                darkBlue: {
+                    value: { _light: "{colors.darkBlue}", _dark: "white" },
+                },
+                // lightBlue: {
+                //     value: { _dark: "black" },
+                // },
             },
         },
     },

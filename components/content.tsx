@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Button, Flex, Text, VStack, Heading, Icon } from "@chakra-ui/react";
 import { FaChevronDown, FaChevronUp, FaComment, FaLightbulb } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
+import { ColorModeButton } from "@/components/ui/color-mode";
 
 interface FeedbackItem {
     id: number;
@@ -89,6 +90,8 @@ export const Content = () => (
                         </Icon>
                     </Flex>
                 </Flex>
+
+                <ColorModeButton />
 
                 <Button
                     bg="primary"
