@@ -1,3 +1,5 @@
+# Mentor Dashboard
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 <p align="center">
@@ -6,7 +8,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 <p align="center">
   <a href="#features"><strong>Features</strong></a> ·
-  <a href="#running-locally"><strong>Running locally</strong></a>
+  <a href="#running-locally"><strong>Running Locally</strong></a> ·
+  <a href="#usage"><strong>Usage</strong></a> ·
+  <a href="#contributing"><strong>Contributing</strong></a>
 </p>
 <br/>
 
@@ -16,24 +20,23 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
     -   Advanced routing for seamless navigation and performance
     -   React Server Components (RSCs) and Server Actions for server-side rendering and increased performance
 -   [chakra-ui](https://www.chakra-ui.com)
+-   Dark Mode
+    -   Toggle between light and dark themes for improved user experience
 
-
-## Running locally
+## Running Locally
 
 First, run the development server:
 
 ```bash
-pnpm install
+npm install
 
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Your app should now be running on [localhost:3000](http://localhost:3000/).
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+## Usage
+
+Once the app is running, you can navigate to different sections using the app router. Use the dark mode toggle to switch between themes for a better user experience.

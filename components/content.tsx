@@ -64,7 +64,7 @@ const feedbackData: FeedbackItem[] = [
     },
 ];
 
-export const Content = () => (
+export const Content: React.FC = () => (
     <>
         <Box flex={1}>
             {/* Header */}
@@ -120,7 +120,17 @@ export const Content = () => (
             {/* Feedback List */}
             <VStack spaceY="4" px={{ base: 4, md: 0 }} pb={4}>
                 {feedbackData.map((feedback: FeedbackItem, index: number) => (
-                    <Box key={index} w="full" p={10} bg="white" borderRadius="10">
+                    <Box
+                        key={index}
+                        w="full"
+                        p={10}
+                        bg="white"
+                        borderRadius="10"
+                        _hover={{
+                            transform: "scale(1.02)",
+                            transition: "transform 0.3s ease-in-out",
+                        }}
+                    >
                         <Box gap={{ base: 4, md: 8 }} display={{ base: "grid", md: "flex" }} gridTemplateColumns="repeat(2, 1fr)">
                             <Flex
                                 textAlign="center"
@@ -155,7 +165,9 @@ export const Content = () => (
                                 <Badge key={index}>{feedback.type}</Badge>
                             </Box>
                             <Flex align="center" gap={2} color="darkBlue" order="3" justifyContent="end">
-                                <FaComment color="#CDD2EE" />
+                                <Icon fontSize="18px">
+                                    <FaComment color="#CDD2EE" />
+                                </Icon>
                                 <Text fontWeight="bold" textStyle="md">
                                     {feedback.comments}
                                 </Text>

@@ -4,11 +4,10 @@ import "./globals.css";
 import { Provider } from "@/components/ui/provider";
 
 const jost = Jost({
-    subsets: ["latin"], // Use 'latin' or other subsets you need
-    weight: ["400", "500", "700"], // Specify required font weights
-    display: "swap", // Optional: Improves loading performance
+    subsets: ["latin"],
+    weight: ["400", "500", "700"],
+    display: "swap",
 });
-
 
 export const metadata: Metadata = {
     title: "Mentor Board",

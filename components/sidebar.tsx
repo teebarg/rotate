@@ -15,14 +15,14 @@ const roadmapData: RoadMapItem[] = [
     { status: "Live", count: 1, color: "skyBlue" },
 ];
 
-export const Sidebar = () => (
+export const Sidebar: React.FC = () => (
     <>
+        {/* Header Card Mobile */}
         <Box
             display={{ base: "flex", md: "none" }}
             alignItems={"center"}
             justifyContent={"space-between"}
-            paddingX={6}
-            paddingY={5}
+            p={6}
             color="white"
             bgGradient="to-r"
             gradientFrom="blue"
@@ -43,18 +43,16 @@ export const Sidebar = () => (
         </Box>
 
         <Box
-            // w={{ base: "full", md: "full", lg: "250px" }}
+            w={{ base: "full", lg: "250px" }}
             display={{ base: "none", md: "flex" }}
             alignItems="stretch"
             gap={6}
             flexDirection={{ md: "row", lg: "column" }}
-            w="full"
-            lg={{ width: "250px" }}
         >
-            {/* Header Card */}
+            {/* Header Card Tablet */}
             <Flex
                 w="full"
-                minH="150px"
+                minH="125px"
                 p={6}
                 borderRadius="10"
                 color="white"
